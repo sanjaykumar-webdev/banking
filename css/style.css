@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap");
+:root {
+  --txt: #f50057;
+  --nav: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+* {
+  font-family: "Nunito", sans-serif;
+  padding: 0%;
+  margin: 0%;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: all 0.2s linear;
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+/*navbar section*/
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 1rem 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: var(--nav);
+}
+header .logo {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+header .logo i {
+  color: var(--txt);
+}
+header i {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+header .navbar a {
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  color: black;
+  font-weight: 600;
+}
+header .navbar a:hover {
+  color: #f50057;
+}
+header #menubar {
+  display: none;
+}
+section {
+  padding: 2rem 9%;
+  height: 100vh;
+}
+.home .homecontainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 9rem;
+}
+.home .homecontainer .info {
+  flex: 1 1 38rem;
+}
+.home .homecontainer .info h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+.home .homecontainer .info p {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.home .homecontainer .img {
+  flex: 1 1 38rem;
+  margin-top: 4rem;
+}
+.home .homecontainer .info .btn {
+  padding: 0.5rem 1.8rem;
+  border: 0.2rem solid var(--txt);
+  border-radius: 2rem;
+  color: black;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+.home .homecontainer .info .btn:hover {
+  color: white;
+  background: #f50057;
+}
+/*media queries*/
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  header {
+    padding: 1rem 2rem;
+  }
+  .home .homecontainer .info {
+    text-align: center;
+  }
+  .home .homecontainer .info h1 {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 768px) {
+  header #menubar {
+    display: inline-block;
+    padding: 1rem 2rem;
+  }
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    text-align: center;
+  }
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  header .navbar a {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 2rem;
+    background: #eee;
+  }
+  header .navbar a:hover {
+    color: #eee;
+    background: var(--txt);
+  }
+  .home .homecontainer .info {
+    text-align: center;
+    padding-top: 1rem;
+  }
+  .home .homecontainer .info h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .home .homecontainer .info h1 {
+    font-size: 2rem;
+  }
+  .home .homecontainer .info {
+    text-align: center;
+  }
+}
