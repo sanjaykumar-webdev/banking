@@ -73,6 +73,9 @@ section {
   padding: 7rem 9%;
   min-height: 100vh;
 }
+/*navbar section ends*/
+
+/*Home section*/
 .home {
   display: flex;
   align-items: center;
@@ -84,7 +87,7 @@ section {
 }
 
 .home .image {
-  flex: 1 1 39rem;
+  flex: 1 1 45rem;
 }
 
 .home .image img {
@@ -92,7 +95,7 @@ section {
 }
 
 .home .content {
-  flex: 1 1 39rem;
+  flex: 1 1 45rem;
 }
 
 .home .content h3 {
@@ -101,8 +104,8 @@ section {
 }
 
 .home .content p {
-  color: #666;
-  font-size: 2rem;
+  color: #333;
+  font-size: 2.5rem;
   padding: 1rem 0;
 }
 .home .content .btn {
@@ -112,12 +115,14 @@ section {
   color: black;
   font-size: 1.7rem;
   font-weight: 400;
-  background: #eee;
+  background: #fff;
 }
 .home .content .btn:hover {
   background: var(--txt);
   color: #eee;
 }
+/*Home section ends*/
+
 /*about section*/
 .about {
   display: flex;
@@ -129,7 +134,7 @@ section {
 .about .image {
   flex: 1 1 39rem;
   height: 50rem;
-  background: url(/img/piggy.svg) no-repeat;
+  background: url(../img/piggy.jpeg) no-repeat;
   background-size: cover;
   background-position: center;
   background-blend-mode: screen;
@@ -150,7 +155,9 @@ section {
   color: #666;
   padding: 1rem 0;
 }
+/*about section ends*/
 
+/*footer*/
 .footer {
   background: #282727;
   padding: 1rem 7%;
@@ -215,6 +222,8 @@ section {
 .footer .credit a {
   color: var(--txt);
 }
+/*footer ends*/
+
 /*media queries*/
 @media (max-width: 991px) {
   html {
@@ -224,11 +233,7 @@ section {
     padding: 1rem 2rem;
   }
   .home .content {
-    text-align: center;
-    font-size: 2.5rem;
-  }
-  .about {
-    margin-top: 3rem;
+    font-size: 2rem;
   }
   .footer {
     margin-top: 5rem;
@@ -264,7 +269,7 @@ section {
   }
   .home .content {
     text-align: center;
-    padding-top: 1rem;
+    padding-top: 5rem;
   }
   .home .content h3 {
     font-size: 3rem;
@@ -275,16 +280,26 @@ section {
   .footer .box:nth-child(2) {
     margin-left: 2rem;
   }
+  .home .image img {
+    height: 40rem;
+  }
+  .home {
+    padding-bottom: 1rem;
+  }
+  .about {
+    padding-top: 1rem;
+  }
 }
 
 @media (max-width: 400px) {
   html {
     font-size: 50%;
   }
-
-  section {
-    padding: 1rem 5%;
-    padding-top: 8rem;
+  .home {
+    padding-bottom: 1rem;
+  }
+  .about {
+    padding-top: 1rem;
   }
   footer {
     margin-top: 20rem;
