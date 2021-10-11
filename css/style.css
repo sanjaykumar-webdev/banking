@@ -19,6 +19,15 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--txt);
+}
+html::-webkit-scrollbar-track {
+  background: #eee;
+}
 /*navbar section*/
 header {
   position: fixed;
@@ -61,42 +70,85 @@ header #menubar {
   display: none;
 }
 section {
-  padding: 2rem 9%;
+  padding: 7rem 9%;
   height: 100vh;
 }
-.home .homecontainer {
+.home {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding-top: 9rem;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
-.home .homecontainer .info {
-  flex: 1 1 38rem;
+
+.home .image {
+  flex: 1 1 39rem;
 }
-.home .homecontainer .info h1 {
-  font-size: 3.5rem;
-  margin-bottom: 0.5rem;
+
+.home .image img {
+  width: 100%;
 }
-.home .homecontainer .info p {
+
+.home .content {
+  flex: 1 1 39rem;
+}
+
+.home .content h3 {
+  color: #333;
+  font-size: 4rem;
+}
+
+.home .content p {
+  color: #666;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  padding: 1rem 0;
 }
-.home .homecontainer .img {
-  flex: 1 1 38rem;
-  margin-top: 4rem;
-}
-.home .homecontainer .info .btn {
-  padding: 0.5rem 1.8rem;
+.home .content .btn {
+  padding: 0.5rem 2.5rem;
+  border-radius: 1.8rem;
   border: 0.2rem solid var(--txt);
-  border-radius: 2rem;
   color: black;
-  font-size: 2rem;
-  margin-top: 1rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  background: #eee;
 }
-.home .homecontainer .info .btn:hover {
-  color: white;
-  background: #f50057;
+.home .content .btn:hover {
+  background: var(--txt);
+  color: #eee;
+}
+/*about section*/
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about .image {
+  flex: 1 1 39rem;
+  height: 50rem;
+  background: url(/img/piggy.svg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: screen;
+}
+
+.about .content {
+  flex: 1 1 39rem;
+  padding: 2rem;
+}
+
+.about .content h3 {
+  font-size: 4rem;
+  color: #333;
+}
+
+.about .content p {
+  font-size: 1.6rem;
+  color: #666;
+  padding: 1rem 0;
 }
 /*media queries*/
 @media (max-width: 991px) {
@@ -106,11 +158,9 @@ section {
   header {
     padding: 1rem 2rem;
   }
-  .home .homecontainer .info {
+  .home .content {
     text-align: center;
-  }
-  .home .homecontainer .info h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
 @media (max-width: 768px) {
@@ -143,20 +193,19 @@ section {
     color: #eee;
     background: var(--txt);
   }
-  .home .homecontainer .info {
+  .home .content {
     text-align: center;
     padding-top: 1rem;
-  }
-  .home .homecontainer .info h1 {
-    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 400px) {
-  .home .homecontainer .info h1 {
-    font-size: 2rem;
+  html {
+    font-size: 50%;
   }
-  .home .homecontainer .info {
-    text-align: center;
+
+  section {
+    padding: 1rem 5%;
+    padding-top: 8rem;
   }
 }
