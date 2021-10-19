@@ -179,13 +179,13 @@ if (isset($_POST['submit'])) {
     <div class="footer">
         <div class="box-container">
 
-            <div class="box">
+            <div class="box" data-aos="fade-down">
                 <h3>contact info</h3>
                 <p> <i class="fas fa-map-marker-alt"></i> ranipet, Tamil Nadu, India - 632503</p>
                 <p> <i class="fas fa-envelope"></i> sanjaykumar.webdev@gmail.com</p>
             </div>
 
-            <div class="box">
+            <div class="box" data-aos="fade-down">
                 <h3>follow us</h3>
                 <a href="https://www.facebook.com/profile.php?id=100007187738996" class="fab fa-facebook-f"></a>
                 <a href="https://instagram.com/may_be_your_friend?utm_medium=copy_link" class="fab fa-instagram"></a>
@@ -193,7 +193,7 @@ if (isset($_POST['submit'])) {
                 <a href="https://github.com/sanjaykumar-webdev" class="fab fa-github"></a>
             </div>
 
-            <div class="box">
+            <div class="box" data-aos="fade-down">
                 <h3>quick links</h3>
                 <a href="index.php">home</a><br><br>
                 <a href="Users.php">Current users</a><br> <br>

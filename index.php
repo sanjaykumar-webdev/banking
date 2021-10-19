@@ -55,7 +55,7 @@
 
     <div class="image"></div>
 
-    <div class="content" data-aos="fade-left">
+    <div class="content" data-aos="fade-down">
       <h3>About Us</h3>
       <p>Sparks online banking helps accessing your bank account and carrying out financial transactions through the
         internet on your smartphone, tablet or computer.</p>
@@ -72,13 +72,13 @@
 
     <div class="box-container">
 
-      <div class="box" data-aos="fade-left">
+      <div class="box" data-aos="fade-down">
         <h3>contact info</h3>
         <p> <i class="fas fa-map-marker-alt"></i> ranipet, Tamil Nadu, India - 632503</p>
         <p> <i class="fas fa-envelope"></i> sanjaykumar.webdev@gmail.com</p>
       </div>
 
-      <div class="box" data-aos="fade-left">
+      <div class="box" data-aos="fade-down">
         <h3>follow us</h3>
         <a href="https://www.facebook.com/profile.php?id=100007187738996" class="fab fa-facebook-f"></a>
         <a href="https://instagram.com/may_be_your_friend?utm_medium=copy_link" class="fab fa-instagram"></a>
@@ -86,7 +86,7 @@
         <a href="https://github.com/sanjaykumar-webdev" class="fab fa-github"></a>
       </div>
 
-      <div class="box" data-aos="fade-left">
+      <div class="box" data-aos="fade-down">
         <h3>quick links</h3>
 
         <a href="#home">home</a><br>
