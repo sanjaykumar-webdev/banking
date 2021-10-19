@@ -4,67 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Money</title>
+    <title>Sparksbank | Transfer Money</title>
+
+    <!-- custom stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+
     <!--font awesome cdn-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
     <!-- AOS cdn -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- bootstrap4 cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 </head>
 
 <body>
+    <!-- navbar -->
+    <header>
+        <a href="#" class="logo"><i class="fas fa-piggy-bank"></i>Sparksbank</a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="users.php">users</a>
+            <a href="transfermoney.php">transfer money</a>
+            <a href="transferhistory.php">transfer history</a>
+        </nav>
+        <i class="fas fa-bars" id="menubar"></i>
+    </header>
+    <!-- navbar ends -->
     <?php
     include 'conn.php';
     $sql = "SELECT * FROM users";
     $result = mysqli_query($conn, $sql);
     ?>
-    <div class="container">
-        <h2 class="text-center pt-4">Transfer Money</h2>
-        <br>
-        <div class="row">
-            <div class="col">
-                <div class="table-responsive-sm">
-                    <table class="table table-hover table-sm table-striped table-condensed table-bordered" style="border-color:black;">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="text-center py-2">Id</th>
-                                <th scope="col" class="text-center py-2">FirstName</th>
-                                <th scope="col" class="text-center py-2">LastName</th>
-                                <th scope="col" class="text-center py-2">Contact</th>
-                                <th scope="col" class="text-center py-2">E-Mail</th>
-                                <th scope="col" class="text-center py-2">Balance</th>
-                                <th scope="col" class="text-center py-2">Operation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($rows = mysqli_fetch_assoc($result)) {
-                            ?>
-                                <tr style="color : black;">
-                                    <td class="py-2"><?php echo $rows['id'] ?></td>
-                                    <td class="py-2"><?php echo $rows['firstname'] ?></td>
-                                    <td class="py-2"><?php echo $rows['lastname'] ?></td>
-                                    <td class="py-2"><?php echo $rows['phone'] ?></td>
-                                    <td class="py-2"><?php echo $rows['email'] ?></td>
-                                    <td class="py-2"><?php echo $rows['balance'] ?></td>
-                                    <td><a href="selectuser.php?id= <?php echo $rows['id']; ?>"> <button type="button" class="btn">Transfer</button></a></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <!-- Table section -->
+    <div class="table_container" data-aos="fade-down">
+        <h2 class="heading">Transfer Money</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Contact</th>
+                    <th>E-Mail</th>
+                    <th>Balance</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($rows = mysqli_fetch_assoc($result)) {
+                ?>
+                    <tr>
+                        <td data-label="S.No"><?php echo $rows['id']; ?></td>
+                        <td data-label="Firstname"><?php echo $rows['firstname']; ?></td>
+                        <td data-label="Lastname"><?php echo $rows['lastname']; ?></td>
+                        <td data-label="Contact"><?php echo $rows['phone']; ?> </td>
+                        <td data-label="Email"><?php echo $rows['email']; ?></td>
+                        <td data-label="Balance"><?php echo $rows['balance']; ?></td>
+                        <td><a href="selectuser.php?id= <?php echo $rows['id']; ?>"> <button type="button" class="btn">Transfer</button></a></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- Table section ends -->
+
+    <!-- footer section -->
+    <div class="footer">
+
+        <div class="box-container">
+
+            <div class="box" data-aos="fade-down">
+                <h3>contact info</h3>
+                <p> <i class="fas fa-map-marker-alt"></i> ranipet, Tamil Nadu, India - 632503</p>
+                <p> <i class="fas fa-envelope"></i> sanjaykumar.webdev@gmail.com</p>
+            </div>
+
+            <div class="box" data-aos="fade-down">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/profile.php?id=100007187738996" class="fab fa-facebook-f"></a>
+                <a href="https://instagram.com/may_be_your_friend?utm_medium=copy_link" class="fab fa-instagram"></a>
+                <a href="https://www.linkedin.com/in/sanjay-kumar-442726220/" class="fab fa-linkedin"></a>
+                <a href="https://github.com/sanjaykumar-webdev" class="fab fa-github"></a>
+            </div>
+
+            <div class="box" data-aos="fade-down">
+                <h3>quick links</h3>
+                <a href="index.php">home</a><br><br>
+                <a href="Users.php">Current users</a><br> <br>
+                <a href="transfermoney.php">transfer Money</a><br> <br>
+                <a href="transferhistory.php">transfer history</a><br> <br>
+            </div>
+
+        </div>
+
+        <h1 class="credit">Created by <a href="#">Mr.Sanjay Kumar</a> | all rights reserved. </h1>
+
+    </div>
+    <!-- footer section ends -->
+
+    <!-- custom js -->
+    <script src="js/script.js"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            delay: 100
+        });
+    </script>
 </body>
 
 </html>

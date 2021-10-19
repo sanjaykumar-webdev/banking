@@ -24,15 +24,15 @@
     <nav class="navbar">
       <a href="#home">Home</a>
       <a href="#about" target="reserved">about</a>
-      <a href="">transfer money</a>
-      <a href="">transfer history</a>
+      <a href="transfermoney.php">transfer money</a>
+      <a href="transferhistory.php">transfer history</a>
     </nav>
     <i class="fas fa-bars" id="menubar"></i>
   </header>
   <!-- navbar ends-->
 
 
-  <section class="home" id="home">
+  <section class="home" id="home" data-aos="fade-down">
 
     <div class="content">
       <h3>Welcome to sparks bank</h3>
@@ -40,7 +40,7 @@
       <a href="createaccount.php"><button class="btn">Create Account</button></a>
     </div>
 
-    <div class="image">
+    <div class="image" data-aos="fade-down">
       <img src="img/tr.png" alt="img">
     </div>
 
@@ -51,11 +51,11 @@
 
   <!-- about section -->
 
-  <section class="about" id="about">
+  <section class="about" id="about" data-aos="fade-down">
 
     <div class="image"></div>
 
-    <div class="content">
+    <div class="content" data-aos="fade-left">
       <h3>About Us</h3>
       <p>Sparks online banking helps accessing your bank account and carrying out financial transactions through the
         internet on your smartphone, tablet or computer.</p>
@@ -72,28 +72,28 @@
 
     <div class="box-container">
 
-      <div class="box">
+      <div class="box" data-aos="fade-left">
         <h3>contact info</h3>
         <p> <i class="fas fa-map-marker-alt"></i> ranipet, Tamil Nadu, India - 632503</p>
         <p> <i class="fas fa-envelope"></i> sanjaykumar.webdev@gmail.com</p>
       </div>
 
-      <div class="box">
+      <div class="box" data-aos="fade-left">
         <h3>follow us</h3>
-        <a href="" class="fab fa-facebook-f"></a>
-        <a href="" class="fab fa-instagram"></a>
-        <a href="" class="fab fa-linkedin"></a>
-        <a href="" class="fab fa-github"></a>
+        <a href="https://www.facebook.com/profile.php?id=100007187738996" class="fab fa-facebook-f"></a>
+        <a href="https://instagram.com/may_be_your_friend?utm_medium=copy_link" class="fab fa-instagram"></a>
+        <a href="https://www.linkedin.com/in/sanjay-kumar-442726220/" class="fab fa-linkedin"></a>
+        <a href="https://github.com/sanjaykumar-webdev" class="fab fa-github"></a>
       </div>
 
-      <div class="box">
+      <div class="box" data-aos="fade-left">
         <h3>quick links</h3>
 
         <a href="#home">home</a><br>
         <br>
         <a href="#about">About Us</a><br> <br>
-        <a href="#top_customers">transfer Money</a><br> <br>
-        <a href="/transaction">transfer history</a><br> <br>
+        <a href="transfermoney.php">transfer Money</a><br> <br>
+        <a href="transferhistory.php">transfer history</a><br> <br>
       </div>
 
     </div>
@@ -103,8 +103,18 @@
   </div>
 
   <!-- footer section ends -->
+
   <!-- custom js -->
   <script src="js/script.js"></script>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      delay: 100
+    });
+  </script>
+
 </body>
 
 </html>

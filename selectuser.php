@@ -19,17 +19,17 @@ if (isset($_POST['submit'])) {
     // constraint to check input of negative value by user
     if (($amount) < 0) {
         echo '<script type="text/javascript">';
-        echo ' alert("Oops! Negative values cannot be transferred")';  // showing an alert box.
+        echo ' alert("Oops! Negative values cannot be transferred")';
         echo '</script>';
     }
 
 
 
-    // constraint to check insufficient balance.
+    // constraint to check insufficient balance
     else if ($amount > $sql1['balance']) {
 
         echo '<script type="text/javascript">';
-        echo ' alert("Bad Luck! Insufficient Balance")';  // showing an alert box.
+        echo ' alert("Bad Luck! Insufficient Balance")';
         echo '</script>';
     }
 
@@ -43,13 +43,10 @@ if (isset($_POST['submit'])) {
         echo "</script>";
     } else {
 
-        // deducting amount from sender's account
         $newbalance = $sql1['balance'] - $amount;
         $sql = "UPDATE users set balance=$newbalance where id=$from";
         mysqli_query($conn, $sql);
 
-
-        // adding amount to reciever's account
         $newbalance = $sql2['balance'] + $amount;
         $sql = "UPDATE users set balance=$newbalance where id=$to";
         mysqli_query($conn, $sql);
@@ -78,14 +75,16 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction</title>
+
+    <!-- custom stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+
     <!--font awesome cdn-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
     <!-- AOS cdn -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- bootstrap4 cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -102,8 +101,9 @@ if (isset($_POST['submit'])) {
     </header>
     <!-- navbar ends-->
 
-    <div class="container">
-        <h2 class="text-center pt-4">Transaction</h2>
+    <!-- Table section -->
+    <div class="table_container" data-aos="fade-down">
+        <h2 class="heading">Transfer Money</h2>
         <?php
         $sid = $_GET['id'];
         $sql = "SELECT * FROM  users where id=$sid";
@@ -114,62 +114,111 @@ if (isset($_POST['submit'])) {
         $rows = mysqli_fetch_assoc($result);
         ?>
         <form method="post" name="tcredit" class="tabletext"><br>
-            <div>
-                <table class="table table-striped table-condensed table-bordered">
-                    <tr style="color : black;">
-                        <th class="text-center">Id</th>
-                        <th class="text-center">FirstName</th>
-                        <th class="text-center">LastName</th>
-                        <th class="text-center">Contact</th>
-                        <th class="text-center">Email</th>
-                        <th class="text-center">Balance</th>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Contact</th>
+                        <th>E-Mail</th>
+                        <th>Balance</th>
                     </tr>
-                    <tr style="color : black;">
-                        <td class="py-2"><?php echo $rows['id'] ?></td>
-                        <td class="py-2"><?php echo $rows['firstname'] ?></td>
-                        <td class="py-2"><?php echo $rows['lastname'] ?></td>
-                        <td class="py-2"><?php echo $rows['phone'] ?></td>
-                        <td class="py-2"><?php echo $rows['email'] ?></td>
-                        <td class="py-2"><?php echo $rows['balance'] ?></td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="S.No"><?php echo $rows['id']; ?></td>
+                        <td data-label="firstname"><?php echo $rows['firstname']; ?></td>
+                        <td data-label="lastname"><?php echo $rows['lastname']; ?></td>
+                        <td data-label="contact"><?php echo $rows['phone']; ?> </td>
+                        <td data-label="email"><?php echo $rows['email']; ?></td>
+                        <td data-label="balance"><?php echo $rows['balance']; ?></td>
                     </tr>
-                </table>
-            </div>
-            <br><br><br>
-            <label style="color : black;"><b>Transfer To:</b></label>
-            <select name="to" class="form-control" required>
-                <option value="" disabled selected>Choose</option>
-                <?php
-                $sid = $_GET['id'];
-                $sql = "SELECT * FROM users where id!=$sid";
-                $result = mysqli_query($conn, $sql);
-                if (!$result) {
-                    echo "Error " . $sql . "<br>" . mysqli_error($conn);
-                }
-                while ($rows = mysqli_fetch_assoc($result)) {
-                ?>
-                    <option class="table" value="<?php echo $rows['id']; ?>">
+                </tbody>
+            </table>
+            <div class="wrapper">
+                <div class="title">
+                    Transfer Here
+                </div>
+                <div class="form">
+                    <div class="inputfield">
+                        <label>Amount</label>
+                        <input type="text" class="input" required size="15" name="amount">
+                    </div>
+                    <div class="inputfield">
+                        <label>Transfer To:</label>
+                        <select name="to" class="input" required>
+                            <option value="" disabled selected>Choose</option>
+                            <?php
+                            $sid = $_GET['id'];
+                            $sql = "SELECT * FROM users where id!=$sid";
+                            $result = mysqli_query($conn, $sql);
+                            if (!$result) {
+                                echo "Error " . $sql . "<br>" . mysqli_error($conn);
+                            }
+                            while ($rows = mysqli_fetch_assoc($result)) {
+                            ?>
+                                <option class="table" value="<?php echo $rows['id']; ?>">
 
-                        <?php echo $rows['firstname']; ?> (Balance:
-                        <?php echo $rows['balance']; ?> )
+                                    <?php echo $rows['firstname']; ?> (Balance:
+                                    <?php echo $rows['balance']; ?> )
 
-                    </option>
-                <?php
-                }
-                ?>
-                <div>
-            </select>
-            <br>
-            <br>
-            <label style="color : black;"><b>Amount:</b></label>
-            <input type="number" class="form-control" name="amount" required>
-            <br><br>
-            <div class="text-center">
-                <button class="btn mt-3" name="submit" type="submit" id="myBtn">Transfer</button>
+                                </option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="inputfield">
+                        <input type="submit" value="Transfer" name="submit" class="btn">
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <div class="footer">
+        <div class="box-container">
+
+            <div class="box">
+                <h3>contact info</h3>
+                <p> <i class="fas fa-map-marker-alt"></i> ranipet, Tamil Nadu, India - 632503</p>
+                <p> <i class="fas fa-envelope"></i> sanjaykumar.webdev@gmail.com</p>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/profile.php?id=100007187738996" class="fab fa-facebook-f"></a>
+                <a href="https://instagram.com/may_be_your_friend?utm_medium=copy_link" class="fab fa-instagram"></a>
+                <a href="https://www.linkedin.com/in/sanjay-kumar-442726220/" class="fab fa-linkedin"></a>
+                <a href="https://github.com/sanjaykumar-webdev" class="fab fa-github"></a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="index.php">home</a><br><br>
+                <a href="Users.php">Current users</a><br> <br>
+                <a href="transfermoney.php">transfer Money</a><br> <br>
+                <a href="transferhistory.php">transfer history</a><br> <br>
+            </div>
+
+        </div>
+
+        <h1 class="credit">Created by <a href="#">Mr.Sanjay Kumar</a> | all rights reserved. </h1>
+
+    </div>
+
+    <!-- footer section ends -->
+
+    <!-- custom js -->
+    <script src="js/script.js"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            delay: 100
+        });
+    </script>
 </body>
 
 </html>
