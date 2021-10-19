@@ -19,3 +19,23 @@ Step 5 : Go to browser and search fpr "localhost/banking/index.php"
 Website Link: https://thirdbaseme.000webhostapp.com/index.php
 
 
+# Attached Files
+
+Home page:
+<img src="img/S1.png">
+
+
+Create Account:
+<img src="img/S2.png">
+
+
+View users:
+<img src="img/S4.png">
+
+
+Transfer Money:
+<img src="img/S3.png">
+
+
+Transfer History:
+<img src="img/S5.png">
